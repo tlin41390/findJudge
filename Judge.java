@@ -4,13 +4,14 @@ public class Judge
    public int findJudge(int total, int[][]townsFolk)
    {   // initializes the number of people trusting the judge.
        int [] trustArray = new int[total+1];
-
+        //will loop through to
        for(int i =0;i<townsFolk.length;i++)
        {
            int[] item = townsFolk[i];
            trustArray[item[0]]--;
            trustArray[item[1]]++;
        }
+       
        for(int i = 1;i<=total;i++)
        {
            if(trustArray[i]==total-1)
@@ -21,9 +22,23 @@ public class Judge
        return -1;
    }
    public static void main(String[] args)
-   {
-       int[][] townsFolk = {{1,3},{1,4},{2,3},{2,4},{4,3}};
+   {    //respective population per set.
+       int A = 4;
+       int B =2;
+       int C = 3;
+        //test cases for each scenario.
+       int [][]set1 = {{1,2}};
+       int [][]set2 = {{1,3},{2,3}};
+       int [][]set3 = {{1,3},{2,3},{3,1}};
+       int [][]set4 = {{1,2},{2,3}};
+       int [][]set5 = {{1,3},{1,4},{2,3},{2,4},{4,3}};
+
        Judge finder = new Judge();
-       System.out.println("Result: "+finder.findJudge(4,townsFolk));
+
+       System.out.println("set1 "+finder.findJudge(B,set1));
+       System.out.println("set2 "+finder.findJudge(C,set2));
+       System.out.println("set3 "+finder.findJudge(C,set3));
+       System.out.println("set4 "+finder.findJudge(A,set4));
+       System.out.println("set5 "+finder.findJudge(A,set5));
    }
 }
