@@ -3,18 +3,20 @@ public class Judge
 {
    public int findJudge(int total, int[][]townsFolk)
    {   // initializes the number of people trusting the judge.
-       int [] trustArray = new int[total+1];
-        //will loop through to
+       int [] trust = new int[total+1];
+        
        for(int i =0;i<townsFolk.length;i++)
        {
            int[] item = townsFolk[i];
-           trustArray[item[0]]--;
-           trustArray[item[1]]++;
+           // decrements because others do not trust judge.
+           trust[item[0]]--;
+           // judges are trusted so increment.
+           trust[item[1]]++;
        }
-       
+
        for(int i = 1;i<=total;i++)
        {
-           if(trustArray[i]==total-1)
+           if(trust[i]==total-1)
            {
                return i;
            }
